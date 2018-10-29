@@ -3,8 +3,7 @@ const router = require('express').Router();
 var PATH = require('../../api/adminPath');
 const POST = appRouter.POST;
 // 生成临时二维码
-router.get('/getTmpQrcode', function (req, res, next) {
-  
+router.get('/getTmpQrcode', function (req, res, next) {  
   let params = req.query;
   params.platformType = Number(params.platformType)
   params.expireSeconds = Number(params.expireSeconds)

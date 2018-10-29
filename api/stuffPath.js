@@ -7,6 +7,7 @@ module.exports = {
     formWecode: api + "/employee/updateInviteEmployee", // 生成邀请二维码
     isAddUserAvail: api + "/employee/checkEeNum", // 查询是否可以添加员工
     getUsers: api + "/employee/getEmployeeListByPage", // 分页查询员工
+    moveApart: api + "/corp/updateDeptOrder", // 移动部门
     modifyApart: api + "/modifyApart", // 修改部门
     processUser: api + '/employee/updateEmployeeListStatus', // 批量停用启用删除员工
     addUser: api + "/employee/saveEmployeeData", //  添加员工

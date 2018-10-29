@@ -14,7 +14,7 @@ router.post('/api/login', function (req, res, next) {
     identificationNumber: req.body.username,
     loginPassword: req.body.psw,
     sessionId: req.sessionID,
-    platformType: "IOS"
+    platformType: req.body.platformType
   }
   POST(req, res, PATH.LOGIN, param)
 })

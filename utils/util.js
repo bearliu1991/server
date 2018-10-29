@@ -61,27 +61,49 @@ module.exports = {
   uncodeSid: function (params) {
     return params
   },
-  transformData: function (obj, rules = {}, subobj, reverse) {
-    const transform = function (obj, rules, subobj) {
-      let temp = {};
-      if (reverse) {
-        for (let key in rules) {
-          if (rules[key] === subobj && obj[rules[key]]) {
-            temp[key] = transform(obj[rules[key]], rules, subobj)
+  transformData: function (obj, rules = {}, reverse, subobj) {
+    /**
+     * obj: 数据 object / array 类型
+     * rules：需要将相关将属性转换的规则；{ 当前属性名：改变后属性名}
+     * subobj： 树的子节点属性名
+     * reverse: 翻转将属性转换的规则
+     */
+
+    // obj 非Object、Array直接返回
+    if (typeof obj !== 'object') {
+      return obj
+    }
+
+    // obj 为Object、Array的情况下
+    const reverseRules = {}
+    if (reverse) {
+      Object.entries(rules).forEach((item) => {
+        reverseRules[item[1]] = item[0]
+      })
+      rules = reverseRules
+    }
+    const transform = function (_obj, _rules, _subobj) {
+      const temp = {}
+      Object.entries(_rules).forEach((item) => {
+        const key = item[0]
+        const value = item[1]
+        if (key === _subobj && _obj[key]) {
+          if (Array.isArray(_obj[key])) {
+            temp[value] = []
+            _obj[key].forEach((_item) => {
+              temp[_rules[key]].push(transform(_item, _rules, _subobj))
+            })
           } else {
-            temp[key] = obj[rules[key]]
+            temp[_rules[key]] = transform(_obj[key], _rules, _subobj)
           }
+        } else {
+          temp[value] = _obj[key]
         }
-      } else {
-        for (let key in rules) {
-          if (key === subobj && obj[key]) {
-            temp[rules[key]] = transform(obj[key], rules, subobj)
-          } else {
-            temp[rules[key]] = obj[key]
-          }
-        }
-      }
+      })
       return temp
+    }
+    if (Array.isArray(obj)) {
+      return obj.map(item => transform(item, rules, subobj))
     }
     return transform(obj, rules, subobj)
   }

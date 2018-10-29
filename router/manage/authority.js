@@ -23,6 +23,7 @@ router.post('/saveOrUpdateAuthItem', function (req, res, next) {
     //查询数据字典
     let param = req.body
     param['sessionId'] = req.sessionID
+    console.log(req.sessionID)
     POST(req, res, PATH.saveOrUpdateAuthItem, param)
 })
 

@@ -1,6 +1,6 @@
 {
     "appenders": {
-      "access": {
+      "http": {
         "type": "dateFile",
         "filename": "logs/access.log",
         "pattern": "-yyyy-MM-dd",
@@ -24,7 +24,7 @@
     },
     "categories": {
       "default": { "appenders": [ "app", "errors" ], "level": "DEBUG" },
-      "http": { "appenders": [ "access"], "level": "DEBUG" }
+      "http": { "appenders": [ "http"], "level": "DEBUG" }
     },
     "pm2": true,
     "pm2InstanceVar": "INSTANCE_ID"

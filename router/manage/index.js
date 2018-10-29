@@ -17,7 +17,11 @@ const sysMessage = require('./sysMessage');
 const sysVersion = require('./sysVersion');
 const company = require('./company');
 const wxPublicAccount = require('./wxPublicAccount');
-
+const userManage = require("./userManage");
+const seats = require('./seats');
+const orderManagement = require("./orderManagement");
+const transactionOrder = require("./transactionOrder");
+const buyOrder = require("./buyOrder");
 module.exports = function (app) {
     app.use(authorize);
     app.use('/api/sensitive', sensitive);
@@ -38,4 +42,9 @@ module.exports = function (app) {
     app.use('/api/verCfg', sysVersion);
     app.use('/api/corp', company);
     app.use('/api/wxPublicAccount', wxPublicAccount);
+    app.use("/api/wechat/user/", userManage);
+    app.use('/api/seat', seats);
+    app.use("/api/orderService", orderManagement);
+    app.use("/api/uPayOrder", transactionOrder); 
+    app.use("/api/buyorder", buyOrder); 
 };

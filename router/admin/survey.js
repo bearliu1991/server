@@ -47,4 +47,9 @@ router.get('/queryCorpPackRoleList', function (req, res, next) {
   delete params.timestamp
   POST(req, res, PATH.queryCorpPackRoleList, params);
 })
+router.get('/queryCompanyStats', function (req, res, next) {
+  let params = req.query;
+  delete params.timestamp
+  POST(req, res, PATH.queryCompanyStats, params);
+})
 module.exports = router;

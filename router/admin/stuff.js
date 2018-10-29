@@ -11,6 +11,12 @@ router.get('/getTree', function (req, res, next) {
   delete params.timestamp
   POST(req, res, PATH.getTree, params);
 })
+// 移动部门
+router.get('/moveApart', function (req, res, next) {
+  let params = req.query;
+  delete params.timestamp
+  POST(req, res, PATH.moveApart, params);
+})
 router.get('/creatApart', function (req, res, next) {
   let params = req.query;
   // params.offset = Number(params.offset);

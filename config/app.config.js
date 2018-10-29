@@ -1,3 +1,4 @@
+
 const path = require('path')
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
@@ -22,10 +23,16 @@ module.exports = function (app) {
         res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE');
         next();
     });
+
     //处理请求数据
-    app.use( bodyParser.urlencoded({ extended: false }) );
-    app.use( bodyParser.json() ); 
-    
+    app.use(bodyParser.urlencoded({
+        limit: '100mb',
+        extended: true
+    }));
+    app.use(bodyParser.json({
+        limit: '100mb'
+    }));
+
     // ssr
     app.engine('html', require('express-art-template'));
     // app.use('/api', express.static(__dirname + '/api'))
@@ -33,4 +40,7 @@ module.exports = function (app) {
     app.set('view options', {
         debug: process.env.NODE_ENV !== 'production'
     });
+
+    // webuploader
+    
 }

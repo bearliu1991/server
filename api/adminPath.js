@@ -21,6 +21,8 @@ module.exports = {
   getUserCorpAuthMulti: api + '/corp/getUserCorpAuthMulti',
   // 修改企业名称
   updateCorpName: api + '/corp/updateCorpName',
+  // 更新公司状态
+  updateCorpStatusByCorpId: api + '/corp/updateCorpStatusForA',
   // 个人信息修改
   editUser: api + '/user/editUser',
   // 退出企业
@@ -43,6 +45,8 @@ module.exports = {
   queryCorpPackageById: api + '/corp/queryCorpPackageById',
   // 查询公司套餐的权限列表
   queryCorpPackRoleList: api + '/corp/queryCorpPackRoleList',
+  // 查询公司状态
+  queryCompanyStats: api + '/corp/queryCompanyStats',
   // 获取公众号列表
   getPublicAccountList: api + '/wxPublicAccount/getPublicAccountList',
   // 判断是否可以添加公众号
@@ -80,5 +84,41 @@ module.exports = {
   // 批量为坐席修改公众号权限
   updateSeatAuthByBatch: api + '/seat/updateSeatAuthByBatch',
   // 解除授权/停用/批量停用/启用统一调用接口
-  updateSeatStatus: api + '/seat/updateSeatStatus'
+  updateSeatStatus: api + '/seat/updateSeatStatus',
+  // 修改坐席基本信息接口
+  updateSeatBaseInfo: api + '/seat/updateSeatBaseInfo',
+  // 修改坐席权限接口
+  updateSeatAuth: api + '/seat/updateSeatAuth',
+  // 修改个性化坐席接口
+  updateConditionalSeat: api + '/seat/updateConditionalSeat',
+  // 是否能上传凭证
+  isCanPayVoucher: api + '/uPayOrder/isCanPayVoucher',
+  // 银行汇款上传凭证,付款方名称账号上传
+  saveAccountTradeOrder: api + '/uPayOrder/saveAccountTradeOrder',
+  // 银行汇款上传凭证 ,付款凭证上传
+  savePayVoucherTradeOrder: api + '/uPayOrder/savePayVoucherTradeOrder',
+  // 是否存在待支付订单(管理平台)
+  isBuyPackage: api + '/corp/isBuyPackage',
+  // 获取公司当前订购服务(管理平台)
+  getCurOrderDetail: api + '/corp/getCurOrderDetail',
+  // 保存创建公司并创建订单
+  saveCorpCreateApplyForOrder: api + '/corp/saveCorpCreateApplyForOrder',
+  // 保存订单(重新订购)(管理平台)
+  saveOrderInfo: api + '/order/saveOrderInfo',
+  // 订单详情(管理平台)
+  getDetail: api + '/order/getDetail',
+  // 订单简单详情(管理平台
+  getSimpleDetail: api + '/order/getSimpleDetail',
+  // 取消订单(管理平台)
+  updateBatchStatusForA: api + '/order/updateBatchStatusForA',
+  // 修改公司logo
+  updateCorpLogo: api + '/corp/updateCorpLogo',
+  // 获取公司混合信息
+  getCorpInfoMulti: api + '/corp/getCorpInfoMulti',
+  // 查询公司，套餐，员工状态
+  getCorpEmpPacStatus: api + '/corp/getCorpEmpPacStatus',
+  // 修改公司省市区
+  updateCorpAddress: api + '/corp/updateCorpAddress',
+  // 修改管理员员工姓名
+  updateAdminEmployeeName: api + '/employee/updateAdminEmployeeName'
 }

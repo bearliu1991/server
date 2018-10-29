@@ -64,4 +64,10 @@ router.post('/queryTItemDefineByPager', function (req, res, next) {
     POST(req, res, PATH.queryTItemDefineByPager, param)
 })
 
+router.post('/loadTConfigListTree', function (req, res, next) {
+    let param = req.body
+    param['sessionId'] = req.sessionID
+    POST(req, res, PATH.loadTConfigListTree, param)
+})
+
 module.exports = router;

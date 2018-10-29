@@ -7,25 +7,36 @@ const admin = require('./router/admin')
 const apiRoute = require('./router/apiService')
 const fileRoute = require('./router/fileService')
 const htmlRoute = require('./router/htmlService')
+const webuploader = require("./router/webuploader");
 // const account = require('./router/account')
 const intercept = require('./router/intercept')
-const redisClient = require('./redisService');
-const logger = require('./utils/log.js');
+const wxapi = require('./router/wxapi')
+const part3pay = require('./router/part3pay')
+const mobile = require("./router/mobile");
+const logger = require('./utils/log.js')
+const wxmsg = require('./wxmsg')
+const wechatService = require('./router/wechatService')
 
 const app = express();
-
-app.use(express.static(path.join(__dirname, 'dist')))
+// 静态资源路径
+app.use(express.static(path.join(__dirname, 'public')))
+// 监听日志
 logger.use(app)
 // 请求同的配置
 appconfig(app);
+// 放弃使用的账号管理
 // app.use(account);
-//运营管理页面
+// 运营管理系统
 manage(app);
-cscs(app);
+// 企业管理系统
 admin(app)
+// H5手机端
+mobile(app);
+// 聊天系统/客服系统
+cscs(app);
+// 聊天系统/客服系统websocket
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
-
 let count = 0
 io.on('connection', function(socket){
   // 接受消息，返回数据
@@ -44,8 +55,13 @@ io.on('connection', function(socket){
 app.use(apiRoute)
 app.use(intercept)
 app.use(fileRoute)
+app.use(part3pay)
+app.use(wxapi)
+app.use(wxmsg)
+app.use(wechatService)
+webuploader(app)
 
-
+// 启动node服务
 server.listen(8091, function () {
   logger.info('server start at time: ' + Date().toLocaleString())
   console.log('listen 8091...')

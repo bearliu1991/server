@@ -12,6 +12,15 @@ router.get('/getUserCorpAuthMulti', function (req, res, next) {
   delete params.timestamp
   POST(req, res, PATH.getUserCorpAuthMulti, params);
 })
+// 更新公司状态
+router.get('/updateCorpStatusByCorpId', function (req, res, next) {
+  let params = req.query;
+  console.error(params)
+  // params.offset = Number(params.offset);
+  // params.limit = Number(params.limit);
+  delete params.timestamp
+  POST(req, res, PATH.updateCorpStatusByCorpId, params);
+})
 // 修改企业名称
 router.get('/updateCorpName', function (req, res, next) {
   let params = req.query;
@@ -19,12 +28,27 @@ router.get('/updateCorpName', function (req, res, next) {
   delete params.timestamp
   POST(req, res, PATH.updateCorpName, params);
 })
+// 更新公司状态
+router.get('/updataCorp', function (req, res, next) {
+  console.error(1111)
+  let params = req.query;
+  console.error(params)
+  params.applyId = Number(params.applyId);
+  delete params.timestamp
+  POST(req, res, PATH.updataCorp, params);
+})
 // 离开公司
 router.get('/savelogoutCompany', function (req, res, next) {
   let params = req.query;
   params.corpId = Number(params.corpId);
   delete params.timestamp
   POST(req, res, PATH.savelogoutCompany, params);
+})
+// 离开公司
+router.get('/updateCorpStatusByCorpId', function (req, res, next) {
+  let params = req.query;
+  delete params.timestamp
+  POST(req, res, PATH.updateCorpStatusByCorpId, params);
 })
 // 个人信息修改
 router.get('/editUser', function (req, res, next) {
