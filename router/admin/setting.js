@@ -2,6 +2,7 @@ const appRouter = require('./httpRequest');
 const router = require('express').Router();
 var PATH = require('../../api/adminPath');
 const POST = appRouter.POST;
+const transformData = appRouter.UTILS.transformData;
 // 修改公司logo
 router.get('/updateCorpLogo', function (req, res, next) {
   let params = req.query;

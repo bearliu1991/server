@@ -15,14 +15,12 @@ router.get('/getExistOrder', function (req, res, next) {
   let params = req.query;
   params.corpId = Number(params.corpId);
   delete params.timestamp
-  console.log(params)
   POST(req, res, PATH.isBuyPackage, params);
 })
 // 取消订单
 router.get('/getCancelOrder', function (req, res, next) {
   let params = req.query;
   params.corpId = Number(params.corpId);
-  params.orderStatus = Number(params.orderStatus);
   delete params.timestamp
   POST(req, res, PATH.updateBatchStatusForA, params);
 })
@@ -39,7 +37,8 @@ router.get('/saveOrderInfo', function (req, res, next) {
   params.packageId = Number(params.packageId)
   params.orderPayprice = Number(params.orderPayprice)
   params.corpId = Number(params.corpId)
-  console.log(params)
+  params.packageValidDay = Number(params.packageValidDay)
+  params.packageDiscountsPrice = Number(params.packageDiscountsPrice)
   delete params.timestamp
   params.corpId = Number(params.corpId)
   POST(req, res, PATH.saveOrderInfo, params);
@@ -49,7 +48,8 @@ router.get('/saveCorpCreateApplyForOrder', function (req, res, next) {
   let params = req.query;
   params.packId = Number(params.packId)
   params.orderPayprice = Number(params.orderPayprice)
-  console.log(params)
+  params.packageValidDay = Number(params.packageValidDay)
+  params.packageDiscountsPrice = Number(params.packageDiscountsPrice)
   delete params.timestamp
   POST(req, res, PATH.saveCorpCreateApplyForOrder, params);
 })

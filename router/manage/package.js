@@ -7,29 +7,7 @@ const POST = appRouter.POST
 const GET = appRouter.GET
 const UTILS = appRouter.UTILS
 
-router.post('/deleteTPackageRoleById', function (req, res, next) {
-    //查询数据字典
-    let param = req.body
-    param['sessionId'] = req.sessionID
-    POST(req, res, PATH.deleteTPackageRoleById, param)
-})
-
-router.post('/getTPackageRoleById', function (req, res, next) {
-    //查询数据字典
-    let param = req.body
-    param['sessionId'] = req.sessionID
-    POST(req, res, PATH.getTPackageRoleById, param)
-})
-
-router.post('/addTPackageRole', function (req, res, next) {
-    //查询数据字典
-    let param = req.body
-    param['sessionId'] = req.sessionID
-    POST(req, res, PATH.addTPackageRole, param)
-})
-
 router.post('/deleteTPackageById', function (req, res, next) {
-    //查询数据字典
     let param = req.body
     param['sessionId'] = req.sessionID
     POST(req, res, PATH.deleteTPackageById, param)

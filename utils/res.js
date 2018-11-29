@@ -5,7 +5,7 @@ module.exports = {
     {isMarked: 1, name: '自己开公司'},
     {isMarked: 1, name: '大好人'},
     {isMarked: 0, name: '男的'},
-    {isMarked: 0, name: '傻逼'},
+    {isMarked: 0, name: '技术员'},
     {isMarked: 0, name: '山炮'},
     {isMarked: 0, name: '精神病'},
     {isMarked: 0, name: '从西藏来的'},

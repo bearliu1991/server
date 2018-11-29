@@ -1,9 +1,11 @@
 const https = require("https");
 // const querystring = require('querystring');
 const json_xml = require("json_xml");
+const logger = require('../utils/log.js')
 
 module.exports={
   post(options, data, res, callBack) {
+    logger.info("web->WECHAT >>>>>> " + '/pay/unifiedorder' + " request params: " + data);
     var _data = data;
     let _options = Object.assign({
       host: "api.mch.weixin.qq.com",
@@ -20,8 +22,10 @@ module.exports={
         console.log("" + d); 
         let b = String("" + d);
         if(b.includes('<xml>')){
+          logger.info("WECHAT->MOBILE >>>>>> " +" response data: " + b);
           callBack({ code: 1, data: json_xml.xml2json(b) });
         } else {
+          logger.info("WECHAT->MOBILE >>>>>> " + " response data: " + b);
           callBack({ code: 1, data: b });
         }        
       });

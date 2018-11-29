@@ -17,9 +17,17 @@ const logger = require('./utils/log.js')
 const wxmsg = require('./wxmsg')
 const wechatService = require('./router/wechatService')
 
+
 const app = express();
 // 静态资源路径
 app.use(express.static(path.join(__dirname, 'public')))
+app.post("/process", (req, res, next )=> {
+  console.log('Form (from querystring): ' + req.query.form);
+  console.log('CSRF token (from hidden form field): ' + req.body._csrf);
+  console.log('Name (from visible form field): ' + req.body.name);
+  console.log('Email (from visible form field): ' + req.body.email);
+  res.redirect(303, '');
+});
 // 监听日志
 logger.use(app)
 // 请求同的配置

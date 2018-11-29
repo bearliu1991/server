@@ -17,7 +17,7 @@ var createNonceStr = function () {
     keys = keys.sort()
     var newArgs = {};
     keys.forEach(function (key) {
-      newArgs[key.toLowerCase()] = args[key];
+      newArgs[key] = args[key];
     });
   
     var string = '';
@@ -40,16 +40,15 @@ var createNonceStr = function () {
     var ret = {
       appId: wxConfig.appId,
       nonceStr: createNonceStr(),
-      timestamp: createTimestamp(),
+      timeStamp: createTimestamp(),
       signType: 'MD5',
       package: 'prepay_id=' + prepay_id
     };
-    var string = raw(ret);
+    var string = raw(ret)+ '&key='+ wxConfig.paySecret;
     const md5=crypto.createHash("md5");
     md5.update(string);
-    ret.paySign == md5.digest('hex');
+    ret.paySign = md5.digest('hex').toUpperCase();
     return ret;
   };
-  
   module.exports = sign;
   

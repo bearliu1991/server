@@ -1,8 +1,6 @@
 const appRouter = require('./routerobj');
-// const router = appRouter.router
 const router = require('express').Router();
 const PATH = appRouter.PATH
-const Request = appRouter.Request
 const POST = appRouter.POST
 const GET = appRouter.GET
 const UTILS = appRouter.UTILS

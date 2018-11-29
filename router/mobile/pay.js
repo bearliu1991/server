@@ -6,6 +6,7 @@ const POST = appRouter.POST;
 const GetClientIp = require("../../utils/getClientIp");
 const https = require("../../https");
 const wxSign = require("../../utils/wxSign");
+const logger = require('../../utils/log.js')
 router.post("/getOrderPayInfo", function(req, res, next) {
   let params = req.body;
   POST(req, res, PATH.getOrderPayInfo, params);
@@ -13,9 +14,12 @@ router.post("/getOrderPayInfo", function(req, res, next) {
 // 创建订单返回订单参数
 router.post("/updatePayOrderReturnParam", function(req, res, next) {
   let params = req.body;
-  // IP微信必传
-  if(params.type !==1) {
-    params.spbillCreateIp = GetClientIp(req);
+  if (params.type === 1) {
+    params.type = 'ALI_PAY'
+  } else if (params.type === 2) {
+    params.type = 'WX_JSAPI_PAY'
+  } else if (params.type === 3) {
+    params.type = 'WX_H5_PAY'
   }
   POST(req, res, PATH.updatePayOrderReturnParam, params, (data) => {
     if(data.code === 1) {
@@ -24,49 +28,57 @@ router.post("/updatePayOrderReturnParam", function(req, res, next) {
         // 直接返回数据
         res.json(data)
       } else {
-        if (params.type === 3) {
+        // 返回参数
+        let pageQuery = {
+          orderId: data.data.orderId,
+          userId: data.data.userId,
+          type: data.data.type,
+          outTradeNo: data.data.outTradeNo
+        }
+        const pageQueryStr = querystring.stringify(pageQuery)
+        if (params.type === 'WX_H5_PAY') {
           // H5支付
           let _data = data.data.wxH5PayForm;  
           https.post({ host: "api.mch.weixin.qq.com", path: "/pay/unifiedorder" }, _data, res, (wxResponse) => {
             // 创建微信订单及返回mweb_url
-            res.json({
+            const responseData = {
               code : 1,
-              data:wxResponse.data.xml
-            })
+              data:wxResponse.data.xml,
+              pageQuery: pageQueryStr
+            }
+            logger.info("node->MOBILE >>>>>> " + " response data: " + JSON.stringify(responseData));
+            res.json(responseData)
           });
           // 根据mweb_url的地址，然后进行重定向
-        } else if (params.type === 2) {
+        } else if (params.type === 'WX_JSAPI_PAY') {
           // 微信公共号支付
           let _data = data.data.wxAppIdPayForm; // 支付表单参数
-          let pageQuery = {
-            orderId: data.data.orderId,
-            userId: data.data.userId,
-            type: data.data.type,
-            outTradeNo: data.data.outTradeNo
-          }
-          const pageQueryStr = querystring.stringify(pageQuery)
           https.post({ host: "api.mch.weixin.qq.com", path: "/pay/unifiedorder" }, _data, res, (wxResponse) => {
             // 创建微信订单及返回参数
-            if (wxResponse.data.xml.return_code === 'FAIL' || wxResponse.data.xml.result_code === 'FAIL') {
+            if (!wxResponse.data.xml.prepay_id) {
               res.json({
                 code: 1,
                 data: wxResponse.data.xml
               })
             } else {
               const signData = wxSign(wxResponse.data.xml.prepay_id)
-              res.json({
+              const responseData = {
                 code : 1,
                 data: signData,
                 pageQuery: pageQueryStr
-              })
+              }
+              logger.info("node->MOBILE >>>>>> " + " response data: " + JSON.stringify(responseData));
+              res.json(responseData)
             }
           });
         } else {
           // 支付宝支付
-          res.json(data)
+          logger.info("node->MOBILE >>>>>> " + " response data: " + JSON.stringify(data));
+          res.json(data)  
         }
       }
     } else {
+      logger.info("node->MOBILE >>>>>> " + " response data: " + JSON.stringify(data));
       res.json(data)
     } 
   });
@@ -74,16 +86,21 @@ router.post("/updatePayOrderReturnParam", function(req, res, next) {
 
 router.post("/updatePayOrderByPayType", function (req, res, next) {
   let params = req.body; // 请求参数，交易单号，用户，支付类型
-  // const tradeNo = params['out_trade_no']
-  // const userId= 
-  // H5支付
-  let data = {
-    packageName: "biaozhun",
-    orderPayPrice: "2800.00",
-    type: 2
-  };
-  res.json({ code: 1, data: data })
-  //   POST(req, res, PATH.updatePayOrderByPayType, params);
+  if (params.type === 1) {
+    params.type = 'WX_JSAPI_PAY'
+  } else if (params.type === 2) {
+    params.type = 'ALI_PAY'
+  } else if (params.type === 3) {
+    params.type = 'BANK_PAY'
+  } else if (params.type === 4) {
+    params.type = 'WX_H5_PAY'
+  }
+  POST(req, res, PATH.updatePayOrderByPayType, params);
+});
+
+router.post("/getPayOrderStatus", function (req, res, next) {
+  let params = req.body; // 交易单号
+  POST(req, res, PATH.getPayOrderStatus, params);
 });
 
 module.exports = router;

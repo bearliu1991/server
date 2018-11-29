@@ -7,6 +7,8 @@ module.exports = {
   getUserInfo: api + "/employee/getInviteEmployInfo", // 通过邀请码获取邀请员工信息
   getOrderPayInfo: api + "/uPayOrder/getOrderPayInfo", // 扫码获取支付信息接口
   updatePayOrderReturnParam: api + "/uPayOrder/updatePayOrderReturnParam", // 确认支付
-  updatePayOrderByPayType: api + "/uPayOrder/updatePayOrderByPayType" // 支付查询接口
+  updatePayOrderByPayType: api + "/uPayOrder/updatePayOrderByPayType", // 支付查询接口
+  getPayOrderStatus: api + "/uPayOrder/getPayOrderStatus", // 查询订单详情
+  getWxPaySign: api + "/uPayOrder/getPaySign"
 };
   

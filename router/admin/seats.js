@@ -79,7 +79,6 @@ router.get('/getSeatDetail', function (req, res, next) {
 // 查询坐席列表接口
 router.get('/getSeatList', function (req, res, next) {
   let params = req.query;
-  params.status = Number(params.status)
   params.offset = Number(params.offset)
   params.limit = Number(params.limit)
   delete params.timestamp
@@ -94,7 +93,6 @@ router.get('/updateSeatAuthByBatch', function (req, res, next) {
 // 解除授权/停用/批量停用/启用统一调用接口
 router.get('/updateSeatStatus', function (req, res, next) {
   let params = req.query;
-  console.log(params)
   delete params.timestamp
   POST(req, res, PATH.updateSeatStatus, params);
 })
@@ -125,7 +123,6 @@ router.get('/updateSeatAuth', function (req, res, next) {
 // 修改个性化坐席接口
 router.post('/updateConditionalSeat', function (req, res, next) {
   let params = req.body;
-  console.log(params)
   // params = JSON.parse(params)
   // params.seatId = Number(params.seatId)
   // if (params.updateConditionalSeats) {

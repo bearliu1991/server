@@ -69,5 +69,11 @@ router.post('/loadTConfigListTree', function (req, res, next) {
     param['sessionId'] = req.sessionID
     POST(req, res, PATH.loadTConfigListTree, param)
 })
+// 查找字典配置树 2018-10-30 xuyuan
+router.post("/queryTItemDefineTree", function(req, res, next) {
+  let param = req.body;
+  param["sessionId"] = req.sessionID;
+  POST(req, res, PATH.queryTItemDefineTree, param);
+});
 
 module.exports = router;

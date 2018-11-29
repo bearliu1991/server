@@ -5,11 +5,11 @@ log4js.configure('config/log4js.json');
 var log = log4js.getLogger("app");
 
 exports.info = function(msg){
-    log.info(msg)
+    log.info(msg + "\n")
 }
 
 exports.err = function(msg){
-    log.error(msg)
+    log.error(msg + "\n");
 }
 
 exports.use = function (app) {

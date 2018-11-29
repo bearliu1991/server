@@ -68,7 +68,6 @@ module.exports = {
      * subobj： 树的子节点属性名
      * reverse: 翻转将属性转换的规则
      */
-
     // obj 非Object、Array直接返回
     if (typeof obj !== 'object') {
       return obj

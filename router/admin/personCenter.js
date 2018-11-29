@@ -2,11 +2,9 @@ const appRouter = require('./httpRequest');
 const router = require('express').Router();
 var PATH = require('../../api/adminPath');
 const POST = appRouter.POST;
-
 // 获取当前用户创建或加入（中） 与 审核通过的 公司列表
 router.get('/getUserCorpAuthMulti', function (req, res, next) {
   let params = req.query;
-  
   // params.offset = Number(params.offset);
   // params.limit = Number(params.limit);
   delete params.timestamp
@@ -15,7 +13,6 @@ router.get('/getUserCorpAuthMulti', function (req, res, next) {
 // 更新公司状态
 router.get('/updateCorpStatusByCorpId', function (req, res, next) {
   let params = req.query;
-  console.error(params)
   // params.offset = Number(params.offset);
   // params.limit = Number(params.limit);
   delete params.timestamp
@@ -30,9 +27,7 @@ router.get('/updateCorpName', function (req, res, next) {
 })
 // 更新公司状态
 router.get('/updataCorp', function (req, res, next) {
-  console.error(1111)
   let params = req.query;
-  console.error(params)
   params.applyId = Number(params.applyId);
   delete params.timestamp
   POST(req, res, PATH.updataCorp, params);

@@ -2,12 +2,12 @@ const appRouter = require('./httpRequest');
 const router = require('express').Router();
 var PATH = require('../../api/adminPath');
 const POST = appRouter.POST;
+const transformData = appRouter.UTILS.transformData;
 // 生成临时二维码
 router.get('/getTmpQrcode', function (req, res, next) {  
   let params = req.query;
   params.platformType = Number(params.platformType)
   params.expireSeconds = Number(params.expireSeconds)
-  params.appAccountId = Number(params.appAccountId)
   if (params.corpId) {
     params.corpId = Number(params.corpId)
   }
@@ -18,7 +18,17 @@ router.get('/getTmpQrcode', function (req, res, next) {
 router.get('/getSession', function (req, res, next) {
   let params = req.query;
   delete params.timestamp;
-  POST(req, res, PATH.getSession, params);
+  POST(req, res, PATH.getSession, params, data => {
+    data.data = transformData(data.data, {
+      bindMobile: "bindMobile",
+      mobileStatus: "mobileStatus",
+      nickName: "nickName",
+      picUrl: "picUrl",
+      userId: "userId",
+      sessionId: "sessionId"
+    });
+    return data;
+  });
 })
 
 router.get('/resendCode', function (req, res, next) {
@@ -50,7 +60,6 @@ router.get('/queryTItemValueByPager', function (req, res, next) {
 router.get('/saveCorpCreateApply', function (req, res, next) {
   let params = req.query;
   params.userId = Number(params.userId);
-  params.packId = Number(params.packId);
   params.corpId = Number(params.corpId);
   delete params.timestamp;
   POST(req, res, PATH.saveCorpCreateApply, params);

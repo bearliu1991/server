@@ -33,5 +33,18 @@ router.post("/updateCorpStatusByCorpId", function(req, res, next) {
   param["sessionId"] = req.sessionID;
     POST(req, res, PATH.updateCorpStatusByCorpId, param);
 });
+// 新创建企业列表查询(运营平台) 2018-10-26 xuyuan
+router.post("/getNewCorpApplyOrderForM", function (req, res, next) {
+    let param = req.body;
+    param["sessionId"] = req.sessionID;
+    POST(req, res, PATH.getNewCorpApplyOrderForM, param);
+});
 
-module.exports = router;
+// 运营端新创建企业详情 2018-10-26 xuyuan
+router.post("/getCorpApplyDetail", function (req, res, next) {
+    let param = req.body;
+    param["sessionId"] = req.sessionID;
+    POST(req, res, PATH.getCorpApplyDetail, param);
+});
+
+module.exports = router; 

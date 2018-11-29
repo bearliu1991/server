@@ -1,3 +1,4 @@
+const login = require("./login");
 const authorize = require('./authorize');
 const sensitive = require('./sensitive');
 const dataLib = require('./dataLib');
@@ -23,6 +24,7 @@ const orderManagement = require("./orderManagement");
 const transactionOrder = require("./transactionOrder");
 const buyOrder = require("./buyOrder");
 module.exports = function (app) {
+    app.use("/api/manage", login);
     app.use(authorize);
     app.use('/api/sensitive', sensitive);
     app.use('/api/tconfig', dataLib);
@@ -42,7 +44,7 @@ module.exports = function (app) {
     app.use('/api/verCfg', sysVersion);
     app.use('/api/corp', company);
     app.use('/api/wxPublicAccount', wxPublicAccount);
-    app.use("/api/wechat/user/", userManage);
+    app.use("/api/user/", userManage);
     app.use('/api/seat', seats);
     app.use("/api/orderService", orderManagement);
     app.use("/api/uPayOrder", transactionOrder); 

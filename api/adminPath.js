@@ -120,5 +120,7 @@ module.exports = {
   // 修改公司省市区
   updateCorpAddress: api + '/corp/updateCorpAddress',
   // 修改管理员员工姓名
-  updateAdminEmployeeName: api + '/employee/updateAdminEmployeeName'
+  updateAdminEmployeeName: api + '/employee/updateAdminEmployeeName',
+  // 获取数据字典值
+  queryTItemValueByPager: api + '/tconfig/queryTItemValueByPager'
 }

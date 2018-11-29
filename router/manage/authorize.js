@@ -71,4 +71,5 @@ router.get('/pageauth', (req, res, next) => {
         })
     }
 })
+
 module.exports = router;

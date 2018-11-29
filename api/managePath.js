@@ -1,180 +1,186 @@
 const config = require('../config/dev.env')
 const api = config.MANAGE_BASE_API;
+const oms = config.MANAGE_BASE_API + "/oms";
 module.exports = {
   baseurl: config.BASE_All,
-  LOGIN: api + "/user/loginNormal",
-  REGISTER: api + "/user/registerUser",
-  LOGOUT: api + "/user/logout",
+  LOGIN: oms + "/user/loginNormal",
+  REGISTER: oms + "/user/registerUser",
+  LOGOUT: oms + "/user/logout",
   GET_SESSION: api + "/user/getSession",
   //敏感词接口
-  getWordList: api + "/sensitive/getWordList",
-  getWordInfo: api + "/sensitive/getWordInfo",
-  delWordUsage: api + "/sensitive/delWordUsage",
-  addWordUsage: api + "/sensitive/addWordUsage",
-  deleteWord: api + "/sensitive/deleteWord",
-  addWord: api + "/sensitive/addWord",
-  updateWordUsage: api + "/sensitive/updateWordUsage",
-  //菜单
-  getAuthMenuItemByMenuId: api + "/auth/getAuthMenuItemByMenuId",
-  saveOrUpdateAuthMenuItem: api + "/auth/saveOrUpdateAuthMenuItem",
-  deletAuthMenu: api + "/auth/deletAuthMenu",
+  getWordList: oms + "/sensitive/getWordList",
+  getWordInfo: oms + "/sensitive/getWordInfo",
+  delWordUsage: oms + "/sensitive/delWordUsage",
+  addWordUsage: oms + "/sensitive/addWordUsage",
+  deleteWord: oms + "/sensitive/deleteWord",
+  addWord: oms + "/sensitive/addWord",
+  updateWordUsage: oms + "/sensitive/updateWordUsage",
+  //菜单（checked）
+  getAuthMenuItemByMenuId: oms + "/auth/getAuthMenuItemByMenuId",
+  saveOrUpdateAuthMenuItem: oms + "/auth/saveOrUpdateAuthMenuItem",
+  deletAuthMenu: oms + "/auth/deletAuthMenu",
   queryAuthMenuTreeBySubSystemAndBusiType:
-    api + "/auth/queryAuthMenuTreeBySubSystemAndBusiType",
-  saveOrUpdateAuthMenu: api + "/auth/saveOrUpdateAuthMenu",
-  deleteAuthMenuItem: api + "/auth/deleteAuthMenuItem",
-  saveMenuAuthItem: api + "/auth/saveMenuAuthItem",
-  saveAuthMenuItem: api + "/auth/saveAuthMenuItem",
-  //角色
-  getAuthRoleItemByRoleId: api + "/auth/getAuthRoleItemByRoleId",
-  saveOrUpdateAuthRoleItem: api + "/auth/saveOrUpdateAuthRoleItem",
-  deleteAuthRole: api + "/auth/deleteAuthRole",
-  queryAuthRole: api + "/auth/queryAuthRole",
-  saveOrUpdateAuthRole: api + "/auth/saveOrUpdateAuthRole",
-  queryAuthRoleByBusiType: api + "/auth/queryAuthRoleByBusiType",
-  deleteAuthRoleByList: api + "/auth/deleteAuthRoleByList",
-  updateAuthRoleStatusByList: api + "/auth/updateAuthRoleStatusByList",
-  //权限
-  deleteAuthItem: api + "/auth/deleteAuthItem",
-  queryAuthItem: api + "/auth/queryAuthItem",
-  saveOrUpdateAuthItem: api + "/auth/saveOrUpdateAuthItem",
-  deleteAuthItemList: api + "/auth/deleteAuthItemList",
-  //数据字典
-  deleteTItemValue: api + "/tconfig/deleteTItemValue",
-  updateTItemValue: api + "/tconfig/updateTItemValue",
-  queryTItemValue: api + "/tconfig/queryTItemValue",
-  addTItemValue: api + "/tconfig/addTItemValue",
-  queryTItemValueByPager: api + "/tconfig/queryTItemValueByPager",
-  updateTItemDefine: api + "/tconfig/updateTItemDefine",
-  addTItemDefine: api + "/tconfig/addTItemDefine",
-  deleteTItemDefine: api + "/tconfig/deleteTItemDefine",
-  queryTItemDefine: api + "/tconfig/queryTItemDefine",
-  queryTItemDefineByPager: api + "/tconfig/queryTItemDefineByPager",
-  loadTConfigListTree: api + "/tconfig/loadTConfigListTree",
+    oms + "/auth/queryAuthMenuTreeBySubSystemAndBusiType",
+  saveOrUpdateAuthMenu: oms + "/auth/saveOrUpdateAuthMenu",
+  deleteAuthMenuItem: oms + "/auth/deleteAuthMenuItem",
+  saveMenuAuthItem: oms + "/auth/saveMenuAuthItem",
+  saveAuthMenuItem: oms + "/auth/saveAuthMenuItem",
+  //角色（checked）
+  getAuthRoleItemByRoleId: oms + "/auth/getAuthRoleItemByRoleId",
+  saveOrUpdateAuthRoleItem: oms + "/auth/saveOrUpdateAuthRoleItem",
+  deleteAuthRole: oms + "/auth/deleteAuthRole",
+  queryAuthRole: oms + "/auth/queryAuthRole",
+  saveOrUpdateAuthRole: oms + "/auth/saveOrUpdateAuthRole",
+  queryAuthRoleByBusiType: oms + "/auth/queryAuthRoleByBusiType",
+  deleteAuthRoleByList: oms + "/auth/deleteAuthRoleByList",
+  updateAuthRoleStatusByList: oms + "/auth/updateAuthRoleStatusByList",
+  //权限（checked）
+  deleteAuthItem: oms + "/auth/deleteAuthItem",
+  queryAuthItem: oms + "/auth/queryAuthItem",
+  saveOrUpdateAuthItem: oms + "/auth/saveOrUpdateAuthItem",
+  deleteAuthItemList: oms + "/auth/deleteAuthItemList",
+  //数据字典(checked)
+  deleteTItemValue: oms + "/tconfig/deleteTItemValue",
+  updateTItemValue: oms + "/tconfig/updateTItemValue",
+  queryTItemValue: oms + "/tconfig/queryTItemValue",
+  addTItemValue: oms + "/tconfig/addTItemValue",
+  queryTItemValueByPager: oms + "/tconfig/queryTItemValueByPager",
+  updateTItemDefine: oms + "/tconfig/updateTItemDefine",
+  addTItemDefine: oms + "/tconfig/addTItemDefine",
+  deleteTItemDefine: oms + "/tconfig/deleteTItemDefine",
+  queryTItemDefine: oms + "/tconfig/queryTItemDefine",
+  queryTItemDefineByPager: oms + "/tconfig/queryTItemDefineByPager",
+  loadTConfigListTree: oms + "/tconfig/loadTConfigListTree",
+  queryTItemDefineTree: oms + "/tconfig/queryTItemDefineTree", // 查找字典配置树
   //客户
-  deleteCustomer: api + "/customer/deleteCustomer",
-  updateCustomerStatus: api + "/customer/updateCustomerStatus",
-  updateCustomerRemarkr: api + "/customer/updateCustomerRemarkr",
-  selectCustomerInfo: api + "/customer/selectCustomerInfo",
-  getCustomerListByPage: api + "/customer/getCustomerListByPage",
-  saveCustomer: api + "/customer/saveCustomer",
+  deleteCustomer: oms + "/customer/deleteCustomer",
+  updateCustomerStatus: oms + "/customer/updateCustomerStatus",
+  updateCustomerRemarkr: oms + "/customer/updateCustomerRemarkr",
+  selectCustomerInfo: oms + "/customer/selectCustomerInfo",
+  getCustomerListByPage: oms + "/customer/getCustomerListByPage",
+  saveCustomer: oms + "/customer/saveCustomer",
   //系统配置、系统变量
-  delSysCfg: api + "/tSysCfg/delSysCfg",
-  getSysCfg: api + "/tSysCfg/getSysCfg",
-  getSysCfgListPaging: api + "/tSysCfg/getSysCfgListPaging",
-  updateSysCfg: api + "/tSysCfg/updateSysCfg",
-  addSysCfg: api + "/tSysCfg/addSysCfg",
-  // 套餐
-  deleteTPackageRoleById: api + "/tPackage/deleteTPackageRoleById",
-  getTPackageRoleById: api + "/tPackage/getTPackageRoleById",
-  addTPackageRole: api + "/tPackage/addTPackageRole",
-  deleteTPackageById: api + "/tPackage/deleteTPackageById",
-  getTPackageById: api + "/tPackage/getTPackageById",
-  getTPackageListByPage: api + "/tPackage/getTPackageListByPage",
-  addOrUpdateTPackage: api + "/tPackage/addOrUpdateTPackage",
-  updateTPackageStatusById: api + "/tPackage/updateTPackageStatusById",
+  delSysCfg: oms + "/tSysCfg/delSysCfg",
+  getSysCfg: oms + "/tSysCfg/getSysCfg",
+  getSysCfgListPaging: oms + "/tSysCfg/getSysCfgListPaging",
+  updateSysCfg: oms + "/tSysCfg/updateSysCfg",
+  addSysCfg: oms + "/tSysCfg/addSysCfg",
+  // 套餐 (checked)
+  deleteTPackageById: oms + "/tPackage/deleteTPackageById", // 删除套餐
+  getTPackageById: oms + "/tPackage/getTPackageById", // 获取套餐信息详情
+  getTPackageListByPage: oms + "/tPackage/getTPackageListByPage", // 获取套餐列表
+  addOrUpdateTPackage: oms + "/tPackage/addOrUpdateTPackage", // 新增或修改套餐接口
+  updateTPackageStatusById: oms + "/tPackage/updateTPackageStatusById", // 更新套餐状态
   // 状态配置
-  getTStatusListByPage: api + "/tStatus/getTStatusListByPage",
-  getTStatusTableById: api + "/tStatus/getTStatusTableById",
-  delTStatusTableById: api + "/tStatus/delTStatusTableById",
-  saveTStatusTable: api + "/tStatus/saveTStatusTable",
-  delTStatusById: api + "/tStatus/delTStatusById",
-  getTStatusById: api + "/tStatus/getTStatusById",
-  saveOrUpdateTStatus: api + "/tStatus/saveOrUpdateTStatus",
+  getTStatusListByPage: oms + "/tStatus/getTStatusListByPage",
+  getTStatusTableById: oms + "/tStatus/getTStatusTableById",
+  delTStatusTableById: oms + "/tStatus/delTStatusTableById",
+  saveTStatusTable: oms + "/tStatus/saveTStatusTable",
+  delTStatusById: oms + "/tStatus/delTStatusById",
+  getTStatusById: oms + "/tStatus/getTStatusById",
+  saveOrUpdateTStatus: oms + "/tStatus/saveOrUpdateTStatus",
   // 服务配置
-  delTService: api + "/tService/delTService",
-  getTServiceById: api + "/tService/getTServiceById",
-  getTServiceListByPage: api + "/tService/getTServiceListByPage",
-  saveOrUpdateTService: api + "/tService/saveOrUpdateTService",
+  delTService: oms + "/tService/delTService",
+  getTServiceById: oms + "/tService/getTServiceById",
+  getTServiceListByPage: oms + "/tService/getTServiceListByPage",
+  saveOrUpdateTService: oms + "/tService/saveOrUpdateTService",
   // tJob
-  deleteTJobCfg: api + "/tJob/deleteTJobCfg",
-  queryTJobCfg: api + "/tJob/queryTJobCfg",
-  addTJobCfg: api + "/tJob/addTJobCfg",
-  updateTJobCfg: api + "/tJob/updateTJobCfg",
-  queryTJobCfgByPager: api + "/tJob/queryTJobCfgByPager",
+  deleteTJobCfg: oms + "/tJob/deleteTJobCfg",
+  queryTJobCfg: oms + "/tJob/queryTJobCfg",
+  addTJobCfg: oms + "/tJob/addTJobCfg",
+  updateTJobCfg: oms + "/tJob/updateTJobCfg",
+  queryTJobCfgByPager: oms + "/tJob/queryTJobCfgByPager",
   // 用户身份定义
-  addTIdentity: api + "/tconfig/addTIdentity",
-  deleteTIdentity: api + "/tconfig/deleteTIdentity",
-  queryTIdentity: api + "/tconfig/queryTIdentity",
-  addTIdentityService: api + "/tconfig/addTIdentityService",
-  updateTIdentity: api + "/tconfig/updateTIdentity",
-  deleteTIdentityService: api + "/tconfig/deleteTIdentityService",
-  queryIdentityByPager: api + "/tconfig/queryIdentityByPager",
-  queryTIdentityService: api + "/tconfig/queryTIdentityService",
+  addTIdentity: oms + "/tconfig/addTIdentity",
+  deleteTIdentity: oms + "/tconfig/deleteTIdentity",
+  queryTIdentity: oms + "/tconfig/queryTIdentity",
+  addTIdentityService: oms + "/tconfig/addTIdentityService",
+  updateTIdentity: oms + "/tconfig/updateTIdentity",
+  deleteTIdentityService: oms + "/tconfig/deleteTIdentityService",
+  queryIdentityByPager: oms + "/tconfig/queryIdentityByPager",
+  queryTIdentityService: oms + "/tconfig/queryTIdentityService",
   // 防作弊刷票配置
-  queryAntiCheatCfgByPager: api + "/tCheatConfig/queryAntiCheatCfgByPager",
-  modAntiCheatCfg: api + "/tCheatConfig/modAntiCheatCfg",
-  delAntiCheatCfg: api + "/tCheatConfig/delAntiCheatCfg",
-  queryAntiCheatCfg: api + "/tCheatConfig/queryAntiCheatCfg",
-  addAntiCheatCfg: api + "/tCheatConfig/addAntiCheatCfg",
+  queryAntiCheatCfgByPager: oms + "/tCheatConfig/queryAntiCheatCfgByPager",
+  modAntiCheatCfg: oms + "/tCheatConfig/modAntiCheatCfg",
+  delAntiCheatCfg: oms + "/tCheatConfig/delAntiCheatCfg",
+  queryAntiCheatCfg: oms + "/tCheatConfig/queryAntiCheatCfg",
+  addAntiCheatCfg: oms + "/tCheatConfig/addAntiCheatCfg",
   // APP应用注册表
-  updateAppConfig: api + "/tAppConfig/updateAppConfig",
-  queryTAppConfigByPager: api + "/tAppConfig/queryTAppConfigByPager",
-  queryAppConfig: api + "/tAppConfig/queryAppConfig",
-  deleteAppConfig: api + "/tAppConfig/deleteAppConfig",
-  addAppConfig: api + "/tAppConfig/addAppConfig",
+  updateAppConfig: oms + "/tAppConfig/updateAppConfig",
+  queryTAppConfigByPager: oms + "/tAppConfig/queryTAppConfigByPager",
+  queryAppConfig: oms + "/tAppConfig/queryAppConfig",
+  deleteAppConfig: oms + "/tAppConfig/deleteAppConfig",
+  addAppConfig: oms + "/tAppConfig/addAppConfig",
   // 系统消息
   getTSystemMessageListByPage:
-    api + "/tSystemMessage/getTSystemMessageListByPage",
+    oms + "/tSystemMessage/getTSystemMessageListByPage",
   saveOrUpdateTSystemMessage:
-    api + "/tSystemMessage/saveOrUpdateTSystemMessage",
-  getTSystemMessageById: api + "/tSystemMessage/getTSystemMessageById",
-  delTSystemMessage: api + "/tSystemMessage/delTSystemMessage",
+    oms + "/tSystemMessage/saveOrUpdateTSystemMessage",
+  getTSystemMessageById: oms + "/tSystemMessage/getTSystemMessageById",
+  delTSystemMessage: oms + "/tSystemMessage/delTSystemMessage",
   // 系统消息
-  getIsNewVersion: api + "/verCfg/getIsNewVersion",
-  deleteVersion: api + "/verCfg/deleteVersion",
-  updateVersion: api + "/verCfg/updateVersion",
-  addVersion: api + "/verCfg/addVersion",
-  queryTAppVersionByPager: api + "/verCfg/queryTAppVersionByPager",
+  getIsNewVersion: oms + "/verCfg/getIsNewVersion",
+  deleteVersion: oms + "/verCfg/deleteVersion",
+  updateVersion: oms + "/verCfg/updateVersion",
+  addVersion: oms + "/verCfg/addVersion",
+  queryTAppVersionByPager: oms + "/verCfg/queryTAppVersionByPager",
   // company management
-  getCorpListMultiByPager: api + "/corp/getCorpListMultiByPager",
-  getCorpInfoMulti: api + "/corp/getCorpInfoMulti",
-  updateCorpStatusByCorpId: api + "/corp/updateCorpStatusByCorpId",
-  updateCorpPackName: api + "/corp/updateCorpPackName",
-  queryCorpPackRoleList: api + "/corp/queryCorpPackRoleList", // 接口在企业管理平台员工模块内
-  // 公众号
-  getPublicAccountListByPage:
-    api + "/wxPublicAccount/getPublicAccountListByPage", // 分页查询
+  getCorpListMultiByPager: oms + "/corp/getCorpListMultiByPager",
+  getCorpInfoMulti: oms + "/corp/getCorpInfoMulti",
+  updateCorpStatusByCorpId: oms + "/corp/updateCorpStatusByCorpId",
+  updateCorpPackName: oms + "/corp/updateCorpPackName",
+  queryCorpPackRoleList: oms + "/corp/queryCorpPackRoleList", // 接口在企业管理平台员工模块内
+  // 新建企业
+  getNewCorpApplyOrderForM: oms + "/corp/getNewCorpApplyOrderForM", // 新创建企业列表查询(运营平台)
+  getCorpApplyDetail: oms + "/corp/getCorpApplyDetail", // 运营端新创建企业详情
+  // 公众号(checked)
+  getPublicAccountListByPage: oms + "/css/getPublicAccountListByPage", // 分页查询
   updatePublicAccountToActiveByOperation:
-    api + "/wxPublicAccount/updatePublicAccountToActiveByOperation", // 启用
+    oms + "/css/updatePublicAccountToActiveByOperation", // 启用
   updatePublicAccountListToDisabled:
-    api + "/wxPublicAccount/updatePublicAccountListToDisabled", // 批量禁用
+    oms + "/css/updatePublicAccountListToDisabled", // 批量禁用
   updatePublicAccountToBlockUpByOperation:
-    api + "/wxPublicAccount/updatePublicAccountToBlockUpByOperation", // 停用
+    oms + "/css/updatePublicAccountToBlockUpByOperation", // 停用
   updatePublicAccountToUnAuthorizationByOperation:
-    api + "/wxPublicAccount/updatePublicAccountToUnAuthorizationByOperation", // 解除授权
+    oms + "/css/updatePublicAccountToUnAuthorizationByOperation", // 解除授权
   updatePublicAccountListStatusToDelete:
-    api + "/wxPublicAccount/updatePublicAccountListStatusToDelete", // 批量删除
-  getPublicAccountList: api + "/wxPublicAccount/getPublicAccountList", // 接口在企业管理平台员工模块内
+    oms + "/css/updatePublicAccountListStatusToDelete", // 批量删除
+  getPublicAccountList: oms + "/css/getPublicAccountList", // 接口在企业管理平台员工模块内
   // 用户信息
-  getCssWxUserByPager: api + "/wechat/user/getCssWxUserByPager",
-  updateRemarkByOpenid: api + "/wechat/user/updateRemarkByOpenid",
-  getUserInfoByOpenid: api + "/wechat/user/getUserInfoByOpenid",
-  updateBlackSubscribeByOpenids:
-    api + "/wechat/user/updateBlackSubscribeByOpenids",
-  // 坐席
-  selectSeatByPagerOperate: api + "/seat/selectSeatByPagerOperate",
-  getSeatDetailByOperation: api + "/seat/getSeatDetailByOperation",
+  getUserDataMulti: oms + "/user/getUserDataMulti", // 获取个人信息复合列表
+  getUserDataMultiDetail: oms + "/user/getUserDataMultiDetail", // 获取个人信息复合详情
+  updateUserStatus: oms + "/user/updateUserStatus", // 更新用户状态
+  getUserAuthMenu: oms + "/user/getUserAuthMenu", // 获取个人信息和菜单
+  // 坐席(checked)
+  selectSeatByPagerOperate: oms + "/seat/selectSeatByPagerOperate",
+  getSeatDetailByOperation: oms + "/seat/getSeatDetailByOperation",
   updateSeatListStatusByOperation:
-    api + "/seat/updateSeatListStatusByOperation",
+    oms + "/seat/updateSeatListStatusByOperation",
   // 6.5订单管理(运营平台)
-  getOrderListByPageForM: api + "/order/getOrderListByPageForM", // 订单列表
-  updateBatchStatusForM: api + "/order/updateBatchStatusForM", // 修改状态
-  getOrderDetail: api + "/order/getDetailForM", // 订单详情
-  // 交易订单
-  getTradeOrderByOperation: api + "/uPayOrder/getTradeOrderByOperation", // 订单列表
-  updateTradeOrderApprovalRefuse:
-    api + "/uPayOrder/updateTradeOrderApprovalRefuse", // 运营系统拒绝审批
-  updateTradeOrderApprovalAdopt:
-    api + "/uPayOrder/updateTradeOrderApprovalAdopt", // 运营系统审批通过
-  getPayOrderDetailForM: api + "/uPayOrder/getPayOrderDetailForM", // X详情
+  getOrderListByPageForM: oms + "/order/getOrderListByPageForM", // 订单列表
+  updateBatchStatusForM: oms + "/order/updateBatchStatusForM", // 修改状态
+  getOrderDetail: oms + "/order/getDetailForM", // 订单详情
+  // 交易订单(checked)
+  getTradeOrderByOperation: oms + "/order/getTradeOrderByOperation", // 订单列表
+  updateTradeOrderApprovalRefuse: oms + "/order/updateTradeOrderApprovalRefuse", // 运营系统拒绝审批
+  updateTradeOrderApprovalAdopt: oms + "/order/updateTradeOrderApprovalAdopt", // 运营系统审批通过
+  getPayOrderDetailForM: oms + "/order/getPayOrderDetailForM", // X详情
   // 购买套餐
-  isBuyPackageForM: api + "/corp/isBuyPackageForM", // 是否存在待支付订单
-  getCurOrderDetailForM: api + "/corp/getCurOrderDetailForM", // 获取公司当前订购服务
-  getTPackageListForM: api + "/tPackage/getTPackageListForM", //套餐列表
-  saveOrderInfoForM: api + "/order/saveOrderInfoForM", //保存订单
-  getSimpleDetailForM: api + "/order/getSimpleDetailForM", // 订单简单详情(运营平台)
+  isBuyPackageForM: oms + "/corp/isBuyPackageForM", // 是否存在待支付订单
+  getCurOrderDetailForM: oms + "/corp/getCurOrderDetailForM", // 获取公司当前订购服务
+  getTPackageListForM: oms + "/corp/getTPackageListForM", //套餐列表
+  saveOrderInfoForM: oms + "/order/saveOrderInfoForM", //保存订单
+  getSimpleDetailForM: oms + "/order/getSimpleDetailForM", // 订单简单详情(运营平台)
   // 上传凭证
-  isCanPayVoucher: api + "/uPayOrder/isCanPayVoucher", // 是否能上传凭证(运营平台)
-  saveAccountTradeOrder: api + "/uPayOrder/saveAccountTradeOrder", // 银行汇款上传凭证,付款方名称账号上传
-  savePayVoucherTradeOrder: api + "/uPayOrder/savePayVoucherTradeOrder" // 银行汇款上传凭证 ,付款凭证上传
+  isCanPayVoucher: oms + "/order/isCanPayVoucher", // 是否能上传凭证(运营平台)
+  saveAccountTradeOrder: oms + "/order/saveAccountTradeOrder", // 银行汇款上传凭证,付款方名称账号上传
+  savePayVoucherTradeOrder: oms + "/order/savePayVoucherTradeOrder", // 银行汇款上传凭证 ,付款凭证上传
+  // 运营用户
+  queryManageUserByUserId: oms + "/user/queryManageUserByUserId", // 获取运营用户详情
+  updateManageUserStatus: oms + "/user/updateManageUserStatus", // 批量启用禁用用户
+  deleteManageUser: oms + "/user/deleteManageUser", // 删除运营用户
+  getUserDataOperateByPager: oms + "/user/getUserDataOperateByPager", // 运营用户列表
+  saveOperateUser: oms + "/user/saveOperateUser", // 运营用户新增
+  updateOperateUser: oms + "/user/updateOperateUser", // 运营用户修改
+  updateManageUserRole: oms + "/user/updateManageUserRole" // 运营用户添加角色
 };
